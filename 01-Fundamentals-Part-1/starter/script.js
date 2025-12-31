@@ -93,7 +93,6 @@ console.log(ageJaden >= 18);
 const isFullAge = ageJaden >= 18;
 
 console.log(now - 1991 > now - 2018);
-*/
 console.log(25 - 10 - 5);
 
 let x, y;
@@ -102,3 +101,28 @@ console.log(x, y);
 
 const averageAge = (15 + 25) / 2;
 console.log(averageAge);
+*/
+
+const firstName = 'Phuc';
+const job = 'student';
+const birthYear = 1999;
+const year = 2025;
+
+
+const phuc = "I'm " + firstName + ', a ' + (year - birthYear) + ' years old ' + job + '!';
+
+console.log(phuc);
+
+//backstick to use with variable.
+const phucNew = `I'm ${firstName}, a ${year - birthYear} year olds ${job}!`;
+console.log(phucNew);
+
+console.log(`Just a regular string...`);
+
+console.log('String with \n\
+multiple\n\
+lines');
+
+console.log(`String
+multiple
+lines`);

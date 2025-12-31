@@ -29,7 +29,7 @@ let population = 10;
         7. BigInt(ES2020): Larger integers than the Number type can hold.
 
     JavaScript has dynamic typing: we do not have to manually define the data type of the value stored in a variable. Instead, date types are determined automatically.
-*/
+
 
 
 //Data types
@@ -48,3 +48,5 @@ console.log("3. Compare: ", population > finland);
 
 const description = country + ' is in ' + continet + ' and its 11 millition people speak ' + language;
 console.log(description);
+
+*/
