@@ -152,6 +152,9 @@ else {
 console.log(century);*/
 
 
+
+
+
 /*Converting string into number.
 //Type conversion
 const inputYear = '1991';
@@ -160,7 +163,6 @@ console.log(inputYear + 18); // 18 should be string not int in this time.
 console.log(Number(inputYear) + 18); // 18 should be int in this time.
 console.log(Number('Jaden'));
 console.log(typeof NaN);
-*/
 
 console.log(String(23), 23); //String() change into string.
 
@@ -171,14 +173,99 @@ console.log('23' - '10' - 3); //JS automatically change 23 and 10 into int.
 console.log('23' * '2'); //JS automatically transfer into number.
 console.log('23' / '2'); //JS automatically transfer into number.
 
-
 let n = '1' + 1; //'11'
 n = n - 1; //10
 console.log(n);
 
-
-let a = 2 + 3 + 4 + '5'; //2 + 3 + 4 will be number 9 + '5' changing them into string. 
+let a = 2 + 3 + 4 + '5'; //2 + 3 + 4 will be number 9 + '5' changing them into string.
 console.log(a);
 
 let b = '10' - '4' - '3' - 2 + '5'; //JS will go over the datatype from left to right.
-console.log(b);
+console.log(b);*/
+
+
+
+
+/*
+//5 falsy values: 0, '', undefined, null, NaN
+//5 of these will be change into false when converting to a boolean.
+//Everything else will be true.
+
+console.log(Boolean(0));
+console.log(Boolean(undefined));
+console.log(Boolean('Jaden'));
+console.log(Boolean({}));
+console.log(Boolean(''));
+
+const money = 100;
+if (money) { //money will be converted into boolean into if/else statement
+    console.log("Don't spend it all ;)");
+} else {
+    console.log("You should get a job!");
+}
+
+let height;
+if (height) {
+    console.log('YAY! Height is defined');
+} else {
+    console.log('Height is UNDEFINED');
+}
+*/
+
+
+
+
+/*
+//Equality operator == vs ===.
+const age = '18';
+if (age === 18) console.log('You just became an adult (strict)');
+
+//IMPORTANT: '18' == 18 will be true type coercion will change 18 into number.
+//However: '18' === 18 will be false.
+
+if (age == 18) console.log('You just became an adult (loose)');
+
+const favourite = Number(prompt("What's your favourite number?"));
+console.log(favourite);
+console.log(typeof favourite);
+
+if (favourite === 23) { // '23' == 23 and change promt into number then 23 === 23
+    console.log('Cool! 23 is an amazing number!');
+} else if (favourite === 7) {
+    console.log('7 is also a cool number');
+} else {
+    console.log('Number is not 23 or 7');
+}
+
+if (favourite !== 23) {
+    console.log('Why not 23?');
+}
+*/
+
+
+
+
+const hasDriversLicense = true; // A
+const hasGoodVision = true; // B
+
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasDriversLicense);
+
+const shouldDrive = hasDriversLicense && hasGoodVision;
+
+// if (shouldDrive) {
+//     console.log('Jaden is able to drive!');
+// }
+// else {
+//     console.log('Someone else should drive...');
+// }
+
+const isTired = true; // C
+console.log(hasDriversLicense && hasGoodVision && !isTired);
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+    console.log('Jaden is able to drive!');
+} else {
+    console.log('Someone else should drive...');
+}
