@@ -151,3 +151,34 @@ else {
 
 console.log(century);*/
 
+
+/*Converting string into number.
+//Type conversion
+const inputYear = '1991';
+console.log(Number(inputYear), inputYear); //Number will change string into int.
+console.log(inputYear + 18); // 18 should be string not int in this time.
+console.log(Number(inputYear) + 18); // 18 should be int in this time.
+console.log(Number('Jaden'));
+console.log(typeof NaN);
+*/
+
+console.log(String(23), 23); //String() change into string.
+
+//type coercion
+//JS will behind the scence change it.
+console.log('I am ' + 23 + ' years old'); //JS automatically change 23 into string.
+console.log('23' - '10' - 3); //JS automatically change 23 and 10 into int.
+console.log('23' * '2'); //JS automatically transfer into number.
+console.log('23' / '2'); //JS automatically transfer into number.
+
+
+let n = '1' + 1; //'11'
+n = n - 1; //10
+console.log(n);
+
+
+let a = 2 + 3 + 4 + '5'; //2 + 3 + 4 will be number 9 + '5' changing them into string. 
+console.log(a);
+
+let b = '10' - '4' - '3' - 2 + '5'; //JS will go over the datatype from left to right.
+console.log(b);
