@@ -15,7 +15,7 @@ let population = 10;
     Object: let me = {
                 name : 'Jaden'
             };
-    
+
     Primitive: let firstName = 'Jaden';
                let age = 30;
 
@@ -48,5 +48,13 @@ console.log("3. Compare: ", population > finland);
 
 const description = country + ' is in ' + continet + ' and its 11 millition people speak ' + language;
 console.log(description);
+
+
+//Assignment if/else statements
+if (population > 33) {
+    console.log(`${country}'s population is above average`);
+} else {
+    console.log(`${country}'s population is ${33 - population} million below average`);
+}
 
 */
