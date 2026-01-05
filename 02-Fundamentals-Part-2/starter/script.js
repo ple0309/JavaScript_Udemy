@@ -153,7 +153,7 @@ Ignore draws this time. Instead, log No team wins... to the console if there is 
 
 TEST DATA 1: Dolphins scored 44, 23, and 71. Koalas scored 65, 54, and 49.
 
-TEST DATA 2: Dolphins scored 85, 54, and 41. Koalas scored 23, 34, and 27. 
+TEST DATA 2: Dolphins scored 85, 54, and 41. Koalas scored 23, 34, and 27.
 //My Code:
 /* Write your code below. Good luck! 🙂
 
@@ -201,7 +201,7 @@ const checkWinner = function(avgDolphins, avgKoalas){
     }
     else
     {
-            
+
         console.log('No team wins...');
     }
 }
@@ -219,8 +219,7 @@ checkWinner(scoreDolphins, scoreKoalas);
 
 /************************** Array ***************************************
  * **********************************************************************
- 
- */
+
 const friend1 = 'Michael';
 const friend2 = 'Steven';
 const friend3 = 'Peter';
@@ -269,3 +268,44 @@ console.log(age1, age2, age3);
 
 const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length - 1])];
 console.log(ages);
+
+ */
+// **********************************************************************
+//Basics Array Operations (Methods)
+const friends = ['Michael', 'Steven', 'Peter'];
+
+//Adding new element last array.
+const newLength = friends.push('Jay'); //push method will push element in array and return the length of new array.
+
+console.log(friends);
+console.log(newLength);
+
+//Adding new element in front of array.
+friends.unshift('John');
+console.log(friends);
+
+//Remove elements
+friends.pop(); //Last
+const popped = friends.pop(); //Return the popped element in variable
+console.log(popped);
+console.log(friends);
+
+friends.shift(); //Remove element in front of the array.
+console.log(friends);
+
+//Return the index of element.
+console.log(friends.indexOf('Steven'));
+console.log(friends.indexOf('Bob')); //Not in there will return -1.
+
+
+//Includes method will return true or false in element in array or not.
+friends.push(23);
+console.log(friends.includes('Steven'));
+console.log(friends.includes('Bob'));
+console.log(friends.includes(23));
+//But will return False if '23' string instead of number 23.
+console.log(friends.includes('23'));
+
+if (friends.includes('Peter')) {
+    console.log('You have a friend called Peter');
+}
