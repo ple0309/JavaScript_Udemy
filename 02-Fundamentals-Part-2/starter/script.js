@@ -213,3 +213,59 @@ scoreKoalas = calcAverage(23,34,27);
 console.log(scoreDolphins, scoreKoalas);
 checkWinner(scoreDolphins, scoreKoalas);
 */
+
+
+
+
+/************************** Array ***************************************
+ * **********************************************************************
+ 
+ */
+const friend1 = 'Michael';
+const friend2 = 'Steven';
+const friend3 = 'Peter';
+
+//Creating new Array
+const friends = ['Michael', 'Steven', 'Peter'];
+console.log(friends);
+
+//Creating new Array
+const y = new Array(1991, 1984, 2008, 2020);
+
+//Accessing the index of array.
+console.log(friends[0]);
+console.log(friends[2]);
+
+//Getting length of Array
+console.log(friends.length);
+console.log(friends[friends.length - 1]);
+
+//Replace the element of the array
+friends[2] = 'Jay';
+console.log(friends);
+
+//Can not do this
+//friends = ['Bob', 'Alice'];
+
+
+const jonas = ['Jonas', 'Schmedtmann', 2037 - 1991]; //This works fine.
+//OR
+const firstName = 'Jaden';
+const test1 = [firstName, 'Schmedtmann', 2037 - 1991, 'student', friends];
+console.log(test1);
+console.log(test1.length);
+
+//**********************************************************************
+//Exercise
+const calcAge = function (birthYear) {
+    return 2037 - birthYear; //expect single value can not pass array in it.
+}
+
+const years = [1990, 1967, 2002, 2010, 2018];
+const age1 = calcAge(years[0]);
+const age2 = calcAge(years[1]);
+const age3 = calcAge(years[2]);
+console.log(age1, age2, age3);
+
+const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length - 1])];
+console.log(ages);
