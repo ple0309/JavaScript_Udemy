@@ -86,35 +86,75 @@
 
 // const firstName = 'Jaden';
 // calcAge(1991);
+//---------------------------------------------------------------------
 
-//------------------------Hoisting and TDZ in Practice ---------------
-//NOTE************** ********************/
-//var can be print out but it will be undefined because it is initialized after console.
-//but let and const will be shown the error.
-//************************************ */
-// Variables
-console.log(me);
-// console.log(job);
-// console.log(year);
+//----------------------  Hoisting and TDZ in Practice ----------------
+// //NOTE************** ********************/
+// //var can be print out but it will be undefined because it is initialized after console.
+// //but let and const will be shown the error.
+// //************************************ */
+// // Variables
+// console.log(me);
+// // console.log(job);
+// // console.log(year);
 
-var me = 'Jonas';
-// let job = 'teacher';
-// const year = 1991;
+// var me = 'Jonas';
+// // let job = 'teacher';
+// // const year = 1991;
 
-// Functions
-console.log(addDecl(2, 3));
-console.log(addExpr(2, 3));
-console.log(addArrow(2, 3));
+// // Functions
+// console.log(addDecl(2, 3));
+// console.log(addExpr(2, 3));
+// console.log(addArrow(2, 3));
 
-function addDecl(a, b) {
-  //This one will be work when console before declare the function because it is hoisted.
-  return a + b;
-}
-const addExpr = function (a, b) {
-  //However const and let can not be hoisted, so it will show the error.
-  return a + b;
+// function addDecl(a, b) {
+//   //This one will be work when console before declare the function because it is hoisted.
+//   return a + b;
+// }
+// const addExpr = function (a, b) {
+//   //However const and let can not be hoisted, so it will show the error.
+//   return a + b;
+// };
+// const addArrow = (a, b) => a + b; //This one is also can not access.
+
+// //If we change them into var like:
+// //var addExpr = function(a,b){return a+b}; //it means that 'undefined(2,3)' so is not function.
+//------------------------------------------------------------------------
+
+//------------------------ this Keyword in Practice ------------------
+// console.log(this); //This will return window
+
+const calcAge = function (birthYear) {
+  console.log(2037 - birthYear);
+  // console.log(this); //It will be undefined.(get its own this keywords)
 };
-const addArrow = (a, b) => a + b; //This one is also can not access.
 
-//If we change them into var like:
-//var addExpr = function(a,b){return a+b}; //it means that 'undefined(2,3)' so is not function.
+calcAge(1991);
+
+const calcAgeArrow = birthYear => {
+  console.log(2037 - birthYear);
+  // console.log(this); //This will return window because it does not get its own this keyword.
+};
+
+calcAgeArrow(1980);
+
+const jonas = {
+  year: 1991,
+
+  calcAge: function () {
+    console.log(this); //point to this jonas object.
+    console.log(2037 - this.year);
+  },
+};
+jonas.calcAge();
+
+const matilda = {
+  year: 2017,
+};
+
+matilda.calcAge = jonas.calcAge; //borrowed method.
+matilda.calcAge();
+
+//Because f copy jonas's function only without year. => undefined.
+const f = jonas.calcAge;
+f();
