@@ -124,37 +124,109 @@
 //------------------------ this Keyword in Practice ------------------
 // console.log(this); //This will return window
 
-const calcAge = function (birthYear) {
-  console.log(2037 - birthYear);
-  // console.log(this); //It will be undefined.(get its own this keywords)
-};
+// const calcAge = function (birthYear) {
+//   console.log(2037 - birthYear);
+//   // console.log(this); //It will be undefined.(get its own this keywords)
+// };
 
-calcAge(1991);
+// calcAge(1991);
 
-const calcAgeArrow = birthYear => {
-  console.log(2037 - birthYear);
-  // console.log(this); //This will return window because it does not get its own this keyword.
-};
+// const calcAgeArrow = birthYear => {
+//   console.log(2037 - birthYear);
+//   // console.log(this); //This will return window because it does not get its own this keyword.
+// };
 
-calcAgeArrow(1980);
+// calcAgeArrow(1980);
+
+// const jonas = {
+//   year: 1991,
+
+//   calcAge: function () {
+//     console.log(this); //point to this jonas object.
+//     console.log(2037 - this.year);
+//   },
+// };
+// jonas.calcAge();
+
+// const matilda = {
+//   year: 2017,
+// };
+
+// matilda.calcAge = jonas.calcAge; //borrowed method.
+// matilda.calcAge();
+
+// //Because f copy jonas's function only without year. => undefined.
+// const f = jonas.calcAge;
+// f();
+
+//------------------------ Regular Function and Arrow Function ------------------
+
+var firstName = 'Matilda'; //this keyword in greet arrow method will get this firstName from window.
 
 const jonas = {
+  firstName: 'Jonas',
   year: 1991,
-
   calcAge: function () {
-    console.log(this); //point to this jonas object.
+    // console.log(this);
     console.log(2037 - this.year);
+
+    //Solution 1
+    // //Function in the function can not call this keyword.
+    // //To do it we have to do other way.
+    // //First:
+    // const self = this;
+
+    // const isMillenial = function () {
+    //   //Cannot work.
+    //   // console.log(this);
+    //   // console.log(this.year >= 1991 && this.year <= 1996);
+
+    //   console.log(self);
+    //   console.log(self.year >= 1981 && self.year <= 1996);
+    // };
+
+    //Solution 2
+    //Arrow function inherits the this keyword from the parent scope
+    const isMillenial = () => {
+      console.log(this); //Uses the this keyword from its parent scope.
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+
+    isMillenial();
   },
+
+  //Arrow Function
+  // greet: () => {
+  //   console.log(this); //This keyword point to window object.
+  //   console.log(`Hey ${this.firstName}`);
+  // }, //this will use the this keyword from the global scope. so undefined.
+
+  greet: function () {
+    console.log(this); //This keyword point to window object.
+    console.log(`Hey ${this.firstName}`);
+  }, //this will use the this keyword from the global scope. so undefined.
 };
+//Calling with arrow function
+// jonas.greet(); //Hey undefined. (Why not Hey Jonas)? Because arrow function does not get its own this keyword.
+// console.log(this.firstName); //window object then undefined.
+
+//Calling with regular function
+jonas.greet(); //Hey Jonas.
+
+//Trying.....
 jonas.calcAge();
 
-const matilda = {
-  year: 2017,
+//Arguments keyword only exist in regular functions.
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
 };
 
-matilda.calcAge = jonas.calcAge; //borrowed method.
-matilda.calcAge();
+addExpr(2, 5);
+addExpr(2, 5, 8, 12);
 
-//Because f copy jonas's function only without year. => undefined.
-const f = jonas.calcAge;
-f();
+var addArrow = (a, b) => {
+  console.log(arguments);
+  return a + b;
+};
+addArrow(2, 5, 8);
