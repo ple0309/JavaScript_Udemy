@@ -161,72 +161,110 @@
 
 //------------------------ Regular Function and Arrow Function ------------------
 
-var firstName = 'Matilda'; //this keyword in greet arrow method will get this firstName from window.
+// var firstName = 'Matilda'; //this keyword in greet arrow method will get this firstName from window.
 
-const jonas = {
-  firstName: 'Jonas',
-  year: 1991,
-  calcAge: function () {
-    // console.log(this);
-    console.log(2037 - this.year);
+// const jonas = {
+//   firstName: 'Jonas',
+//   year: 1991,
+//   calcAge: function () {
+//     // console.log(this);
+//     console.log(2037 - this.year);
 
-    //Solution 1
-    // //Function in the function can not call this keyword.
-    // //To do it we have to do other way.
-    // //First:
-    // const self = this;
+//     //Solution 1
+//     // //Function in the function can not call this keyword.
+//     // //To do it we have to do other way.
+//     // //First:
+//     // const self = this;
 
-    // const isMillenial = function () {
-    //   //Cannot work.
-    //   // console.log(this);
-    //   // console.log(this.year >= 1991 && this.year <= 1996);
+//     // const isMillenial = function () {
+//     //   //Cannot work.
+//     //   // console.log(this);
+//     //   // console.log(this.year >= 1991 && this.year <= 1996);
 
-    //   console.log(self);
-    //   console.log(self.year >= 1981 && self.year <= 1996);
-    // };
+//     //   console.log(self);
+//     //   console.log(self.year >= 1981 && self.year <= 1996);
+//     // };
 
-    //Solution 2
-    //Arrow function inherits the this keyword from the parent scope
-    const isMillenial = () => {
-      console.log(this); //Uses the this keyword from its parent scope.
-      console.log(this.year >= 1981 && this.year <= 1996);
-    };
+//     //Solution 2
+//     //Arrow function inherits the this keyword from the parent scope
+//     const isMillenial = () => {
+//       console.log(this); //Uses the this keyword from its parent scope.
+//       console.log(this.year >= 1981 && this.year <= 1996);
+//     };
 
-    isMillenial();
-  },
+//     isMillenial();
+//   },
 
-  //Arrow Function
-  // greet: () => {
-  //   console.log(this); //This keyword point to window object.
-  //   console.log(`Hey ${this.firstName}`);
-  // }, //this will use the this keyword from the global scope. so undefined.
+//   //Arrow Function
+//   // greet: () => {
+//   //   console.log(this); //This keyword point to window object.
+//   //   console.log(`Hey ${this.firstName}`);
+//   // }, //this will use the this keyword from the global scope. so undefined.
 
-  greet: function () {
-    console.log(this); //This keyword point to window object.
-    console.log(`Hey ${this.firstName}`);
-  }, //this will use the this keyword from the global scope. so undefined.
+//   greet: function () {
+//     console.log(this); //This keyword point to window object.
+//     console.log(`Hey ${this.firstName}`);
+//   }, //this will use the this keyword from the global scope. so undefined.
+// };
+// //Calling with arrow function
+// // jonas.greet(); //Hey undefined. (Why not Hey Jonas)? Because arrow function does not get its own this keyword.
+// // console.log(this.firstName); //window object then undefined.
+
+// //Calling with regular function
+// jonas.greet(); //Hey Jonas.
+
+// //Trying.....
+// jonas.calcAge();
+
+// //Arguments keyword only exist in regular functions.
+// const addExpr = function (a, b) {
+//   console.log(arguments);
+//   return a + b;
+// };
+
+// addExpr(2, 5);
+// addExpr(2, 5, 8, 12);
+
+// var addArrow = (a, b) => {
+//   console.log(arguments);
+//   return a + b;
+// };
+// addArrow(2, 5, 8);
+
+//------------------------ Memory Management: Primitives vs. Objects ------------------
+/*
+//How and where are variables created in JavaScript?
+//Unlike other langues, memory is automatically managed by JavaScript behind the scenes.
+//Every value we create in JavaScript goes through a memory lifecycle.
+
+//1. Allocate memory
+let temp = 23.7;
+//Whenever we assign a value to a new variable, the engine automatically allocates (reserves) a piece of memory to store the value.
+
+//2. Use memory
+temp = temp + 5;
+round(temp);
+//While code is running, the value is written, read, and updated in the allocated piece of memory
+
+//3. Release memory
+// temp is removed from memory
+//When no longer needed, the value is deleted from memory to free up resources. The released memory is used for new values.
+*/
+//Primitives Or Objects
+//1. Primitives: number, string, boolean, undefined, null, symbol, BigInt.
+//2. Objects: Object literals, Arrays, Functions, Many more.
+
+//Primitives stored in call stack.
+//Objects stored in heap.
+
+/*
+//References to object stored in call stack.
+const location = {
+  city: 'Faro',
+  country: 'Portugal',
 };
-//Calling with arrow function
-// jonas.greet(); //Hey undefined. (Why not Hey Jonas)? Because arrow function does not get its own this keyword.
-// console.log(this.firstName); //window object then undefined.
-
-//Calling with regular function
-jonas.greet(); //Hey Jonas.
-
-//Trying.....
-jonas.calcAge();
-
-//Arguments keyword only exist in regular functions.
-const addExpr = function (a, b) {
-  console.log(arguments);
-  return a + b;
-};
-
-addExpr(2, 5);
-addExpr(2, 5, 8, 12);
-
-var addArrow = (a, b) => {
-  console.log(arguments);
-  return a + b;
-};
-addArrow(2, 5, 8);
+const newLocation = location;
+newLocation.city = 'Lisbon'; //will change the object from location and newLocation.
+// variable location in call stack but reference pointing city = "Faro" and country = "Portugal" in heap.
+// newLocation copy from location also pointing the same in heap with city and country.
+*/
