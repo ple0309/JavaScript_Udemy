@@ -268,3 +268,49 @@ newLocation.city = 'Lisbon'; //will change the object from location and newLocat
 // variable location in call stack but reference pointing city = "Faro" and country = "Portugal" in heap.
 // newLocation copy from location also pointing the same in heap with city and country.
 */
+
+////////////////////////////////////////////////////////////////////////////////
+//Object References in Practice(Shallow vs. Deep Copies)
+
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+
+function marryPerson(originalPerson, newLastName) {
+  originalPerson.lastName = newLastName;
+  return originalPerson;
+}
+const marriedJessica = marryPerson(jessica, 'Davis');
+
+// const marriedJessica = jessica;
+// marriedJessica.lastName = 'Davis';
+
+console.log('Before:', jessica);
+console.log('After:', marriedJessica);
+
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+};
+
+//Shallow copy
+//... operator can make lastName to change in only jessicaCopy, but jessicaCopy.family.push() something it will affect jessica2 and jessicaCopy at the same time.
+//Because both point to the same pbject reference in the heap that is family.
+const jessicaCopy = { ...jessica2 };
+jessicaCopy.lastName = 'Davis';
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+console.log('Before:', jessica2);
+console.log('After:', jessicaCopy);
+
+//Deep copy/clone
+const jessicaClone = structuredClone(jessica2);
+jessicaClone.family.push('Jake');
+jessicaClone.family.push('Dave');
+console.log('Original:', jessica2);
+console.log('Clone:', jessicaClone);
