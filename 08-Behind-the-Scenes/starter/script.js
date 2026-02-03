@@ -272,45 +272,66 @@ newLocation.city = 'Lisbon'; //will change the object from location and newLocat
 ////////////////////////////////////////////////////////////////////////////////
 //Object References in Practice(Shallow vs. Deep Copies)
 
-const jessica = {
-  firstName: 'Jessica',
-  lastName: 'Williams',
-  age: 27,
-};
+// const jessica = {
+//   firstName: 'Jessica',
+//   lastName: 'Williams',
+//   age: 27,
+// };
 
-function marryPerson(originalPerson, newLastName) {
-  originalPerson.lastName = newLastName;
-  return originalPerson;
-}
-const marriedJessica = marryPerson(jessica, 'Davis');
+// function marryPerson(originalPerson, newLastName) {
+//   originalPerson.lastName = newLastName;
+//   return originalPerson;
+// }
+// const marriedJessica = marryPerson(jessica, 'Davis');
 
-// const marriedJessica = jessica;
-// marriedJessica.lastName = 'Davis';
+// // const marriedJessica = jessica;
+// // marriedJessica.lastName = 'Davis';
 
-console.log('Before:', jessica);
-console.log('After:', marriedJessica);
+// console.log('Before:', jessica);
+// console.log('After:', marriedJessica);
 
-const jessica2 = {
-  firstName: 'Jessica',
-  lastName: 'Williams',
-  age: 27,
-  family: ['Alice', 'Bob'],
-};
+// const jessica2 = {
+//   firstName: 'Jessica',
+//   lastName: 'Williams',
+//   age: 27,
+//   family: ['Alice', 'Bob'],
+// };
 
-//Shallow copy
-//... operator can make lastName to change in only jessicaCopy, but jessicaCopy.family.push() something it will affect jessica2 and jessicaCopy at the same time.
-//Because both point to the same pbject reference in the heap that is family.
-const jessicaCopy = { ...jessica2 };
-jessicaCopy.lastName = 'Davis';
+// //Shallow copy
+// //... operator can make lastName to change in only jessicaCopy, but jessicaCopy.family.push() something it will affect jessica2 and jessicaCopy at the same time.
+// //Because both point to the same pbject reference in the heap that is family.
+// const jessicaCopy = { ...jessica2 };
+// jessicaCopy.lastName = 'Davis';
 
-jessicaCopy.family.push('Mary');
-jessicaCopy.family.push('John');
-console.log('Before:', jessica2);
-console.log('After:', jessicaCopy);
+// jessicaCopy.family.push('Mary');
+// jessicaCopy.family.push('John');
+// console.log('Before:', jessica2);
+// console.log('After:', jessicaCopy);
 
-//Deep copy/clone
-const jessicaClone = structuredClone(jessica2);
-jessicaClone.family.push('Jake');
-jessicaClone.family.push('Dave');
-console.log('Original:', jessica2);
-console.log('Clone:', jessicaClone);
+// //Deep copy/clone
+// const jessicaClone = structuredClone(jessica2);
+// jessicaClone.family.push('Jake');
+// jessicaClone.family.push('Dave');
+// console.log('Original:', jessica2);
+// console.log('Clone:', jessicaClone);
+
+////////////////////////////////////////////////////////////////
+///////// Memory Management : Garbage Collection////////////////
+//How is memory freed up after we no longer need a value?
+
+//Call Stack: variable environment is simply deleted when EC pops off stack. (function but global still in it)
+
+//Heap: Garbage collection(central memory management tool)
+
+//Mark-and-Sweep Algorithm:
+//1. Mark: Mark all objects that are reachable from a root as "alive". "Roots": starting point to search for alive objects.
+
+//2. Sweep: Delete un-marked(unreachable) objects and reclaim memory for future allocations.
+//It will go back and forth to check un-mark and delete them after function in call stack is gone.
+
+//Memory leak: When objects that are no longer needed are incorrectly still reachable, and therefore not being garbage collected.
+
+//1. Closures -> A Closer look at functions
+//2.Prototypal Inheritance -> Object Oriented Programming(OOP) with javascript
+//3.Event loop -> Asynchronous JavaScript: Promises, Async/Await and AJAX
+//4.How the DOM Really Works -> Advanced DOM and Events.
